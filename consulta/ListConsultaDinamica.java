@@ -7,8 +7,12 @@ public class ListConsultaDinamica implements IListConsulta {
         return false;
     }
 
-    public String[] getUsers(String nom, int data1, int data2) {
-        return new String[0];
+    public String getUsers(String recurs) {
+        return new String;
+    }
+
+    public String getUsersData(String recurs, int data1, int data2) {
+        return null;
     }
 
     public String getAccess(String nom, boolean orden) {
