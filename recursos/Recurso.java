@@ -8,7 +8,7 @@ public class Recurso {
 
     public Recurso(String nombre) {
         this.nombre=nombre;
-        this.consultas = new LinkedList<Consulta>();
+        this.consultas = new LinkedList<>();
     }
 
     public void addConsulta(Consulta a) {

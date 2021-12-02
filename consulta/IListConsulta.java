@@ -1,8 +1,5 @@
-import java.util.LinkedList;
-import java.util.List;
-
 public interface IListConsulta {
-    void addConsulta(Consulta consulta);
+    void addConsulta(Consulta consulta) throws Exception;
     boolean consultat(String nom, String recurs);
     String getUsers(String recurs);
     String getUsersData(String recurs, int data1, int data2);

@@ -1,4 +1,4 @@
-import java.util.Objects;
+
 
 public class Consulta {
 
@@ -16,23 +16,22 @@ public class Consulta {
     }
 
     /** Verifica si una fecha o una hora es superior a la otra **/
-    public boolean esMajor(int datahora2,boolean dataORhora){
+    public boolean esMajor(int datahora2, boolean dataORhora) {
         int datahora1;
-        if(dataORhora=true) {
+        if(dataORhora) {
             datahora1 = this.fecha;
         }
         else datahora1 = this.hora;
 
-        int[] abc1 = new int[3];
-        int[] abc2 = new int[3];
+        int[] abc1;
+        int[] abc2;
         abc1 = this.convertDataHora(datahora1);
         abc2 = this.convertDataHora(datahora2);
 
 
         if(abc1[0]>abc2[0]) return true;
         if(abc1[1]>abc2[1]) return true;
-        if(abc1[2]>abc2[2]) return true;
-        return false;
+        return abc1[2] > abc2[2];
     }
 
     private int[] convertDataHora(int fechahora){
@@ -77,9 +76,8 @@ public class Consulta {
     public void setHora(int hora) {
         this.hora = hora;
     }
-    public Consulta copy(){
-        Consulta copia = new Consulta(this.user,this.recurso,this.fecha,this.hora);
-        return copia;
+    public Consulta copy() {
+        return new Consulta(this.user, this.recurso, this.fecha, this.hora);
     }
 
 }
