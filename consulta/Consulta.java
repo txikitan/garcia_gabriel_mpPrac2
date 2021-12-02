@@ -16,7 +16,7 @@ public class Consulta {
     }
 
     /** Verifica si una fecha o una hora es superior a la otra **/
-    public boolean esMajor(int datahora2, boolean dataORhora) {
+    public int esMajor(int datahora2, boolean dataORhora) {
         int datahora1;
         if(dataORhora) {
             datahora1 = this.fecha;
@@ -27,11 +27,25 @@ public class Consulta {
         int[] abc2;
         abc1 = this.convertDataHora(datahora1);
         abc2 = this.convertDataHora(datahora2);
+        if(dataORhora) {
+            if(abc1[0] == abc2[0] && abc1[1] == abc2[1] && abc1[2] == abc2[2]) return 0;
+            if(abc1[2] > abc2[2]) return 1;
+            if(abc1[2] < abc2[2]) return -1;
+            if(abc1[1] > abc2[1]) return 1;
+            if(abc1[1] < abc2[1]) return -1;
+            if(abc1[0] > abc2[0]) return 1;
+            return -1;
 
-
-        if(abc1[0]>abc2[0]) return true;
-        if(abc1[1]>abc2[1]) return true;
-        return abc1[2] > abc2[2];
+        }
+        else {
+            if(abc1[0]==abc2[0] && abc1[1]==abc2[1] && abc1[2]==abc2[2]) return 0;
+            if(abc1[0] > abc2[0]) return 1;
+            if(abc1[0] < abc2[0]) return -1;
+            if(abc1[1] > abc2[1]) return 1;
+            if(abc1[1] < abc2[1]) return -1;
+            if(abc1[2] > abc2[2]) return 1;
+            return -1;
+        }
     }
 
     private int[] convertDataHora(int fechahora){
