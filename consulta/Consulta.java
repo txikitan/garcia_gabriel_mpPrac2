@@ -15,6 +15,10 @@ public class Consulta {
         // Control errores
     }
 
+    public boolean equals(Consulta a) {
+        return this.user.equalsIgnoreCase(a.getUser()) && this.recurso.equalsIgnoreCase(a.getRecurso()) && this.fecha == a.getFecha() && this.hora == a.getHora();
+    }
+
     /** Verifica si una fecha o una hora es superior a la otra **/
     public int esMajor(int datahora2, boolean dataORhora) {
         int datahora1;
