@@ -3,7 +3,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 
 public class ListConsultaDinamica implements IListConsulta {
-    private LinkedList<Consulta> listaConsultaDinamica;
+    private final LinkedList<Consulta> listaConsultaDinamica;
 
     public ListConsultaDinamica() {
         this.listaConsultaDinamica = new LinkedList<>();
@@ -55,7 +55,7 @@ public class ListConsultaDinamica implements IListConsulta {
                 arr.add(consulta);
             }
         }
-        Collections.sort(arr, new ConsultComparator()); // Uso mi comparator para ordenar
+        arr.sort(new ConsultComparator()); // Uso mi comparator para ordenar
         for (Consulta consulta : arr) {
             access.append(consulta.getRecurso()).append(";");
         }

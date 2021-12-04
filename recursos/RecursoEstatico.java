@@ -1,9 +1,9 @@
 public class RecursoEstatico implements IRecurso {
 
-    private String nombre;
-    private Consulta[] consultas;
+    private final String nombre;
+    private final Consulta[] consultas;
     private int nConsultas;
-    private int dim;
+    private final int dim;
 
     public RecursoEstatico(String nombre, int dim) {
         this.dim=dim;
@@ -75,17 +75,10 @@ public class RecursoEstatico implements IRecurso {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public Consulta[] getConsultas() {
         return consultas;
     }
 
-    public void setConsultas(Consulta[] consultas) {
-        this.consultas = consultas;
-    }
 
     public void setNConsultas(int nConsultas) {
         this.nConsultas = nConsultas;
@@ -94,12 +87,4 @@ public class RecursoEstatico implements IRecurso {
     public int getDim() {
         return dim;
     }
-
-    public void setDim(int dim) {
-        this.dim = dim;
-    }
-
-
-
-
 }

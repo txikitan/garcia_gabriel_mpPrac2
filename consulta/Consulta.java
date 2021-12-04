@@ -3,7 +3,7 @@
 public class Consulta {
 
     private String user;
-    private String recurso;
+    private final String recurso;
     private int fecha;
     private int hora;
 
@@ -73,10 +73,6 @@ public class Consulta {
 
     public String getRecurso() {
         return recurso;
-    }
-
-    public void setRecurso(String recurso) {
-        this.recurso = recurso;
     }
 
     public int getFecha() {

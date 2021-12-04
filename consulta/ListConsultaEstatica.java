@@ -1,4 +1,4 @@
-public class ListConsultaEstatica<high> implements IListConsulta {
+public class ListConsultaEstatica implements IListConsulta {
     private int nConsultas;
     private final Consulta[] listaConsultaEstatica;
     private final int dim;

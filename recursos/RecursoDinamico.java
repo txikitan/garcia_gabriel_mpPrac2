@@ -4,7 +4,7 @@ import java.util.LinkedList;
 public class RecursoDinamico implements IRecurso {
 
 
-    private String nombre;
+    private final String nombre;
     private LinkedList<Consulta> consultas;
 
     public RecursoDinamico(String nombre) {
@@ -13,7 +13,6 @@ public class RecursoDinamico implements IRecurso {
     }
 
     public void addConsulta(Consulta a) {
-        this.nombre = a.getRecurso();
         this.consultas.add(a);
     }
 
@@ -80,9 +79,6 @@ public class RecursoDinamico implements IRecurso {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public LinkedList<Consulta> getConsultas() {
         return consultas;
