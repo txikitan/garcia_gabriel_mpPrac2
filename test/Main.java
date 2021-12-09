@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
@@ -18,18 +19,20 @@ public class Main {
         if(modo==1) {
             System.out.println("Numero de consultas?");
             int dim = scanner.nextInt();
-            ListConsultaEstatica listaEstatica = null;
+            ListConsultaEstatica listaEstatica = new ListConsultaEstatica(dim);
             try {
                 listaEstatica = leerFicheroEstatico(filename,dim);
             } catch (IOException e) {
                 e.printStackTrace();
             }
             testEstatico(listaEstatica);
-            ListRecursosEstatico listaREstatica = consultaToRecursoEstatic(listaEstatica);
+            System.out.println("Numero de recursos?");
+            int dimRecursos = scanner.nextInt();
+            ListRecursosEstatico listaREstatica = consultaToRecursoEstatic(listaEstatica,dim,dimRecursos);
             testREstatico(listaREstatica);
         }
         else {
-            ListConsultaDinamica listaDinamica = null;
+            ListConsultaDinamica listaDinamica = new ListConsultaDinamica();
             try {
                 listaDinamica = leerFicheroDinamico(filename);
             } catch (IOException e) {
@@ -95,12 +98,22 @@ public class Main {
 
     }
 
-    public static ListRecursosEstatico consultaToRecursoEstatic(ListConsultaEstatica listaEstatica) {
-
+    public static ListRecursosEstatico consultaToRecursoEstatic(ListConsultaEstatica listaEstatica, int dim, int dimRecursos) {
+        ListRecursosEstatico listaREstatica = new ListRecursosEstatico(dimRecursos,dim);
+        Consulta[] listaConsultas = listaEstatica.getListaConsultaEstatica();
+        for(int i=0;i<listaEstatica.getnConsultas();i++){
+            listaREstatica.addConsultaAt(listaConsultas[i]);
+        }
+        return listaREstatica;
     }
 
     public static ListRecursosDinamico consultaToRecursoDinamic(ListConsultaDinamica listaDinamica) {
-
+        ListRecursosDinamico listaRDinamica = new ListRecursosDinamico();
+        LinkedList<Consulta> listaConsultas = listaDinamica.getListaConsultaDinamica();
+        for(int i=0;i<listaDinamica.getnConsultas();i++) {
+            listaRDinamica.addConsultaAt(listaConsultas.get(i));
+        }
+        return listaRDinamica;
     }
 
     public static void testRDinamico(ListRecursosDinamico listaREstatica) {

@@ -3,6 +3,8 @@ import java.util.Comparator;
 import java.util.LinkedList;
 
 public class ListConsultaDinamica implements IListConsulta {
+
+
     private final LinkedList<Consulta> listaConsultaDinamica;
 
     public ListConsultaDinamica() {
@@ -71,4 +73,16 @@ public class ListConsultaDinamica implements IListConsulta {
         }
 
     }
+
+    /**
+     * Getter de la lista de consultas
+     */
+    public LinkedList<Consulta> getListaConsultaDinamica() {
+        return listaConsultaDinamica;
+    }
+
+    public int getnConsultas() {
+        return listaConsultaDinamica.size();
+    }
+
 }

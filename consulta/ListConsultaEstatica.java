@@ -1,4 +1,6 @@
 public class ListConsultaEstatica implements IListConsulta {
+
+
     private int nConsultas;
     private final Consulta[] listaConsultaEstatica;
     private final int dim;
@@ -100,4 +102,16 @@ public class ListConsultaEstatica implements IListConsulta {
         arr[i] = arr[j];
         arr[j] = temp;
     }
+    /**
+     * Getters y setters basicos
+     */
+    public int getnConsultas() {
+        return nConsultas;
+    }
+
+
+    public Consulta[] getListaConsultaEstatica() {
+        return listaConsultaEstatica;
+    }
+
 }

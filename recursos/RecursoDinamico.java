@@ -5,7 +5,7 @@ public class RecursoDinamico implements IRecurso {
 
 
     private final String nombre;
-    private LinkedList<Consulta> consultas;
+    private final LinkedList<Consulta> consultas;
 
     public RecursoDinamico(String nombre) {
         this.nombre=nombre;
@@ -80,11 +80,4 @@ public class RecursoDinamico implements IRecurso {
     }
 
 
-    public LinkedList<Consulta> getConsultas() {
-        return consultas;
-    }
-
-    public void setConsultas(LinkedList<Consulta> consultas) {
-        this.consultas = consultas;
-    }
 }

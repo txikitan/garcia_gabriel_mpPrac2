@@ -75,16 +75,4 @@ public class RecursoEstatico implements IRecurso {
         return nombre;
     }
 
-    public Consulta[] getConsultas() {
-        return consultas;
-    }
-
-
-    public void setNConsultas(int nConsultas) {
-        this.nConsultas = nConsultas;
-    }
-
-    public int getDim() {
-        return dim;
-    }
 }
