@@ -1,12 +1,15 @@
-
+/**Metodologias de la programacion
+* Practica 2 - Fichero que define el tipo basico Consulta
+* Gabriel Garcia **/
 
 public class Consulta {
 
-    private String user;
+    private final String user;
     private final String recurso;
-    private int fecha;
-    private int hora;
+    private final int fecha;
+    private final int hora;
 
+    /** Metodo constructor +*/
     public Consulta(String user, String recurso, int fecha, int hora) {
         this.user = user;
         this.recurso = recurso;
@@ -15,11 +18,12 @@ public class Consulta {
         // Control errores
     }
 
+    /** Metodo que verifica si una consulta es exactamente igual a otra **/
     public boolean equals(Consulta a) {
         return this.user.equalsIgnoreCase(a.getUser()) && this.recurso.equalsIgnoreCase(a.getRecurso()) && this.fecha == a.getFecha() && this.hora == a.getHora();
     }
 
-    /** Verifica si una fecha o una hora es superior a la otra **/
+    /** Metodo que verifica si una fecha o una hora es superior a la otra **/
     public int esMajor(int datahora2, boolean dataORhora) {
         int datahora1;
         if(dataORhora) {
@@ -52,6 +56,7 @@ public class Consulta {
         }
     }
 
+    /** Metodo auxiliar que splittea la fecha / hora para comparar si es mayor a otra**/
     private int[] convertDataHora(int fechahora){
         int[] abc = new int[3];
         abc[0] = fechahora % 100;
@@ -67,10 +72,6 @@ public class Consulta {
         return user;
     }
 
-    public void setUser(String user) {
-        this.user = user;
-    }
-
     public String getRecurso() {
         return recurso;
     }
@@ -79,17 +80,10 @@ public class Consulta {
         return fecha;
     }
 
-    public void setFecha(int fecha) {
-        this.fecha = fecha;
-    }
-
     public int getHora() {
         return hora;
     }
 
-    public void setHora(int hora) {
-        this.hora = hora;
-    }
     public Consulta copy() {
         return new Consulta(this.user, this.recurso, this.fecha, this.hora);
     }

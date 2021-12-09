@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int modo;
@@ -25,7 +26,12 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            testEstatico(listaEstatica);
+            if(testEstatico(listaEstatica)){
+                System.out.println("Juego de pruebas del sistema de consultas resulto exitoso");
+            }
+            else {
+                System.out.println("Error en el juego de pruebas del sistema de consultas");
+            }
             System.out.println("Numero de recursos?");
             int dimRecursos = scanner.nextInt();
             ListRecursosEstatico listaREstatica = consultaToRecursoEstatic(listaEstatica,dim,dimRecursos);
@@ -38,7 +44,12 @@ public class Main {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            testDinamico(listaDinamica);
+            if(testDinamico(listaDinamica)){
+                System.out.println("Juego de pruebas del sistema de consultas resulto exitoso");
+            }
+            else {
+                System.out.println("Error en el juego de pruebas del sistema de consultas");
+            }
             ListRecursosDinamico listaRDinamica = consultaToRecursoDinamic(listaDinamica);
             testRDinamico(listaRDinamica);
         }
@@ -90,12 +101,38 @@ public class Main {
     }
 
 
-    public static void testEstatico(ListConsultaEstatica listaEstatica) {
+    public static boolean testEstatico(ListConsultaEstatica listaEstatica) {
+        /*Insertar aqui datos para las pruebas*/
+        int data1 = 0;
+        int data2 = 0;
+        String recurs = "";
+        String nom = "";
+        String access = "";
+        String users = "";
+        String usersdata = "";
+        boolean orden = true;
 
+        if(!(listaEstatica.consultat(nom,recurs))) return false;
+        if(!(listaEstatica.getAccess(nom, orden).equalsIgnoreCase(access))) return false;
+        if(!(listaEstatica.getUsers(recurs).equalsIgnoreCase(users))) return false;
+        return listaEstatica.getUsersData(recurs, data1, data2).equalsIgnoreCase(usersdata);
     }
 
-    public static void testDinamico(ListConsultaDinamica listaDinamica) {
+    public static boolean testDinamico(ListConsultaDinamica listaDinamica) {
+        /*Insertar aqui datos para las pruebas*/
+        int data1 = 0;
+        int data2 = 0;
+        String recurs = "";
+        String nom = "";
+        String access = "";
+        String users = "";
+        String usersdata = "";
+        boolean orden = true;
 
+        if(!(listaDinamica.consultat(nom,recurs))) return false;
+        if(!(listaDinamica.getAccess(nom, orden).equalsIgnoreCase(access))) return false;
+        if(!(listaDinamica.getUsers(recurs).equalsIgnoreCase(users))) return false;
+        return listaDinamica.getUsersData(recurs, data1, data2).equalsIgnoreCase(usersdata);
     }
 
     public static ListRecursosEstatico consultaToRecursoEstatic(ListConsultaEstatica listaEstatica, int dim, int dimRecursos) {

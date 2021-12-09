@@ -1,4 +1,6 @@
-import java.util.Collections;
+/**Metodologias de la programacion
+ * Practica 2 - Fichero que implementa con almacenamiento dinamico el TAD IListConsulta
+ * Gabriel Garcia **/
 import java.util.Comparator;
 import java.util.LinkedList;
 
@@ -7,14 +9,17 @@ public class ListConsultaDinamica implements IListConsulta {
 
     private final LinkedList<Consulta> listaConsultaDinamica;
 
+    /** Metodo constructor **/
     public ListConsultaDinamica() {
         this.listaConsultaDinamica = new LinkedList<>();
     }
 
+    /** Añade una consulta **/
     public void addConsulta(Consulta consulta) {
         listaConsultaDinamica.add(consulta);
     }
 
+    /** Verifica si un recurso ha sido consultado por cierto usuario **/
     public boolean consultat(String nom, String recurs) {
         boolean consultado=false;
         for (Consulta consulta : listaConsultaDinamica) {
@@ -26,6 +31,7 @@ public class ListConsultaDinamica implements IListConsulta {
         return consultado;
     }
 
+    /** Devuelve la lista de usuarios que han consultado un recurso **/
     public String getUsers(String recurs) {
         StringBuilder users = new StringBuilder();
         for (Consulta consulta : listaConsultaDinamica) {
@@ -36,6 +42,7 @@ public class ListConsultaDinamica implements IListConsulta {
         return users.toString();
     }
 
+    /** Devuelve la lista de usuarios que han consultado un recurso entr dos fechas**/
     public String getUsersData(String recurs, int data1, int data2) {
         StringBuilder users = new StringBuilder();
         for (Consulta consulta : listaConsultaDinamica) {
@@ -49,6 +56,7 @@ public class ListConsultaDinamica implements IListConsulta {
         return users.toString();
     }
 
+    /** Devuelve la lista de recursos accedidos por un usuario, ordenados por fecha(true) o por hora(false)**/
     public String getAccess(String nom, boolean orden) {
         StringBuilder access = new StringBuilder();
         LinkedList<Consulta> arr = new LinkedList<>();
@@ -64,7 +72,7 @@ public class ListConsultaDinamica implements IListConsulta {
         return access.toString();
     }
 
-    /**Uso el polimorfismo de la clase Comparator para implementar mi propio metodo compare**/
+    /** Uso el polimorfismo de la clase Comparator para implementar mi propio metodo compare**/
     static class ConsultComparator implements Comparator<Consulta> {
 
         @Override
@@ -74,9 +82,7 @@ public class ListConsultaDinamica implements IListConsulta {
 
     }
 
-    /**
-     * Getter de la lista de consultas
-     */
+    /** Getters y setters basicos **/
     public LinkedList<Consulta> getListaConsultaDinamica() {
         return listaConsultaDinamica;
     }

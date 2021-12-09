@@ -1,3 +1,6 @@
+/**Metodologias de la programacion
+ * Practica 2 - Fichero que implementa con almacenamiento estatico el TAD IListConsulta
+ * Gabriel Garcia **/
 public class ListConsultaEstatica implements IListConsulta {
 
 
@@ -5,12 +8,14 @@ public class ListConsultaEstatica implements IListConsulta {
     private final Consulta[] listaConsultaEstatica;
     private final int dim;
 
+    /** Metodo constructor **/
     public ListConsultaEstatica(int dim) {
         this.dim = dim;
         this.listaConsultaEstatica = new Consulta[dim];
         this.nConsultas = 0;
     }
 
+    /** Añade una consulta **/
     public void addConsulta(Consulta consulta) throws NullPointerException {
         if (nConsultas < dim) {
             this.listaConsultaEstatica[nConsultas] = consulta.copy();
@@ -18,7 +23,7 @@ public class ListConsultaEstatica implements IListConsulta {
         } else throw new NullPointerException();
     }
 
-
+    /** Verifica si un recurso ha sido consultado por cierto usuario **/
     public boolean consultat(String nom, String recurs) {
         boolean consultado = false;
         for (int i = 0; i < nConsultas; i++) {
@@ -30,6 +35,7 @@ public class ListConsultaEstatica implements IListConsulta {
         return consultado;
     }
 
+    /** Devuelve la lista de usuarios que han consultado un recurso **/
     public String getUsers(String recurs) {
         StringBuilder users = new StringBuilder();
         for (int i = 0; i < nConsultas; i++) {
@@ -40,6 +46,7 @@ public class ListConsultaEstatica implements IListConsulta {
         return users.toString();
     }
 
+    /** Devuelve la lista de usuarios que han consultado un recurso entr dos fechas**/
     public String getUsersData(String recurs, int data1, int data2) {
         StringBuilder users = new StringBuilder();
         for (int i = 0; i < nConsultas; i++) {
@@ -53,6 +60,7 @@ public class ListConsultaEstatica implements IListConsulta {
         return users.toString();
     }
 
+    /** Devuelve la lista de recursos accedidos por un usuario, ordenados por fecha(true) o por hora(false)**/
     public String getAccess(String nom, boolean orden) {
         StringBuilder access= new StringBuilder();
         Consulta[] arr = new Consulta[nConsultas];
@@ -70,9 +78,7 @@ public class ListConsultaEstatica implements IListConsulta {
         return access.toString();
     }
 
-    /**
-     * QuickSort para ordenar el vector por fecha/hora
-     **/
+    /** QuickSort para ordenar el vector por fecha/hora **/
 
     private static int partition(Consulta[] arr, int low, int high, boolean dataORhora) {
         Consulta pivot = arr[high];
@@ -88,7 +94,6 @@ public class ListConsultaEstatica implements IListConsulta {
         return i + 1;
     }
 
-
     private static void quicksort(Consulta[] arr, int low, int high, boolean dataORhora) {
         if (low < high) {
             int pi = partition(arr, low, high, dataORhora);
@@ -102,13 +107,11 @@ public class ListConsultaEstatica implements IListConsulta {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-    /**
-     * Getters y setters basicos
-     */
+
+    /** Getters y setters basicos **/
     public int getnConsultas() {
         return nConsultas;
     }
-
 
     public Consulta[] getListaConsultaEstatica() {
         return listaConsultaEstatica;
