@@ -1,3 +1,7 @@
+/**Metodologias de la programacion
+ * Practica 2 - Fichero que implementa de forma estatica la interfaz del TAD IRecurso
+ *              que almacenara todas las consultas a dicho recurso
+ * Gabriel Garcia **/
 public class RecursoEstatico implements IRecurso {
 
     private final String nombre;
@@ -5,20 +9,21 @@ public class RecursoEstatico implements IRecurso {
     private int nConsultas;
     private final int dim;
 
+    /** Metodo constructor **/
     public RecursoEstatico(String nombre, int dim) {
         this.dim=dim;
         this.nConsultas=0;
         this.consultas=new Consulta[dim];
         this.nombre=nombre;
     }
-
+    /** Añade una consulta al recurso **/
     public void addConsulta(Consulta a) throws NullPointerException {
         if(nConsultas<dim){
             consultas[nConsultas]=a;
         }
         else throw new NullPointerException();
     }
-
+    /** Elimina una consulta del recurso **/
     public void removeConsulta(Consulta a) {
         for(int i=0;i<nConsultas;i++){
             if(consultas[i].equals(a)) {
@@ -28,7 +33,7 @@ public class RecursoEstatico implements IRecurso {
             }
         }
     }
-
+    /** Dada una fecha, elimina las consultas cuya fecha coincide **/
     public void removeConsultaData(int data) {
         for(int i=0;i<nConsultas;i++){
             if(consultas[i].getFecha()==data){
@@ -37,7 +42,7 @@ public class RecursoEstatico implements IRecurso {
             }
         }
     }
-
+    /** Devuelve una cadena con los usuarios que han consultado un recurso **/
     public String getUsuaris() {
         StringBuilder usuaris = new StringBuilder();
         for(Consulta c : consultas) {
@@ -45,7 +50,7 @@ public class RecursoEstatico implements IRecurso {
         }
         return usuaris.toString();
     }
-
+    /** Dada una fecha, devuelve una cadena con los usuarios que han consultado el recurso en esa fecha **/
     public String getUsuarisData(int data){
         StringBuilder usuaris = new StringBuilder();
         for(Consulta c : consultas) {
@@ -55,12 +60,11 @@ public class RecursoEstatico implements IRecurso {
         }
         return usuaris.toString();
     }
-
-
+    /** Devuelve el numero de consultas que tiene el recurso **/
     public int getNConsultas() {
         return nConsultas;
     }
-
+    /** Metodo auxiliar que ajusta la lista estatica al eliminar una consulta a cierto recurso **/
     private static void eliminar(Consulta[] arr, int index, int dim) {
         arr[index]=null;
         if (dim - 1 - index >= 0) {

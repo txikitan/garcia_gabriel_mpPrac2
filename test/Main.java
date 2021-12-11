@@ -1,3 +1,6 @@
+/**Metodologias de la programacion
+ * Practica 2 - Fichero Main en donde se implementa la estructura funcional de la aplicacion y se realizan los testeos
+ * Gabriel Garcia **/
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -55,7 +58,7 @@ public class Main {
         }
         scanner.close();
     }
-
+    /** Dada un nombre de fichero y una dimension,convierte la informacion del fichero a una instancia estatica del TAD IListConsulta **/
     public static ListConsultaEstatica leerFicheroEstatico(String filename,int dim) throws IOException {
         Scanner sc;
         sc = new Scanner(new File(filename));
@@ -68,7 +71,7 @@ public class Main {
         }
         return listaEstatica;
     }
-
+    /** Dada un nombre de fichero, convierte la informacion del fichero a una instancia dinamica del TAD IListConsulta **/
     public static ListConsultaDinamica leerFicheroDinamico(String filename) throws IOException{
         Scanner sc;
         sc = new Scanner(new File(filename));
@@ -82,7 +85,7 @@ public class Main {
         }
         return listaDinamica;
     }
-
+    /** Metodo auxiliar que se encargara de convertir cada linea del fichero de entrada en una Consulta para ser añadida a su lista **/
     private static Consulta parseData(String str) {
         int data, hora;
         String recurs, user;
@@ -99,8 +102,7 @@ public class Main {
         lineScanner.close();
         return c;
     }
-
-
+    /** Devuelve cierto si el test de los metodos de la implementacion estatica del TAD IListConsulta ha ido correctamente **/
     public static boolean testEstatico(ListConsultaEstatica listaEstatica) {
         /*Insertar aqui datos para las pruebas*/
         int data1 = 0;
@@ -117,7 +119,7 @@ public class Main {
         if(!(listaEstatica.getUsers(recurs).equalsIgnoreCase(users))) return false;
         return listaEstatica.getUsersData(recurs, data1, data2).equalsIgnoreCase(usersdata);
     }
-
+    /** Devuelve cierto si el test de los metodos de la implementacion dinamica del TAD IListConsulta ha ido correctamente **/
     public static boolean testDinamico(ListConsultaDinamica listaDinamica) {
         /*Insertar aqui datos para las pruebas*/
         int data1 = 0;
@@ -134,7 +136,7 @@ public class Main {
         if(!(listaDinamica.getUsers(recurs).equalsIgnoreCase(users))) return false;
         return listaDinamica.getUsersData(recurs, data1, data2).equalsIgnoreCase(usersdata);
     }
-
+    /**Convierte el conjunto de consultas del objeto estatico del TAD IListConculta a un objeto estatico del TAD IListRecursos**/
     public static ListRecursosEstatico consultaToRecursoEstatic(ListConsultaEstatica listaEstatica, int dim, int dimRecursos) {
         ListRecursosEstatico listaREstatica = new ListRecursosEstatico(dimRecursos,dim);
         Consulta[] listaConsultas = listaEstatica.getListaConsultaEstatica();
@@ -143,7 +145,7 @@ public class Main {
         }
         return listaREstatica;
     }
-
+    /**Convierte el conjunto de consultas del objeto dinamico del TAD IListConculta a un objeto dinamico del TAD IListRecursos**/
     public static ListRecursosDinamico consultaToRecursoDinamic(ListConsultaDinamica listaDinamica) {
         ListRecursosDinamico listaRDinamica = new ListRecursosDinamico();
         LinkedList<Consulta> listaConsultas = listaDinamica.getListaConsultaDinamica();
@@ -152,11 +154,11 @@ public class Main {
         }
         return listaRDinamica;
     }
-
+    /** Devuelve cierto si el test de los metodos de la implementacion estatica del TAD IListRecursos ha ido correctamente **/
     public static void testRDinamico(ListRecursosDinamico listaREstatica) {
 
     }
-
+    /** Devuelve cierto si el test de los metodos de la implementacion dinamica del TAD IListRecursos ha ido correctamente **/
     public static void testREstatico(ListRecursosEstatico listaRDinamica) {
 
     }

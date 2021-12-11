@@ -10,7 +10,7 @@ public interface IListConsulta {
     boolean consultat(String nom, String recurs);
     /** Devuelve la lista de usuarios que han consultado un recurso **/
     String getUsers(String recurs);
-    /** Devuelve la lista de usuarios que han consultado un recurso entr dos fechas**/
+    /** Devuelve la lista de usuarios que han consultado un recurso entre dos fechas**/
     String getUsersData(String recurs, int data1, int data2);
     /** Devuelve la lista de recursos accedidos por un usuario, ordenados por fecha(true) o por hora(false)**/
     String getAccess(String nom, boolean orden);
