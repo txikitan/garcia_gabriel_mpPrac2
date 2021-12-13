@@ -65,7 +65,12 @@ public class ListConsultaDinamica implements IListConsulta {
                 arr.add(consulta);
             }
         }
-        arr.sort(new ConsultComparator()); // Uso mi comparator para ordenar
+        if(orden){
+            arr.sort(new ConsultComparatorData()); // Uso mi comparator para ordenar
+        }
+        else{
+            arr.sort(new ConsultComparatorHora());
+        }
         for (Consulta consulta : arr) {
             access.append(consulta.getRecurso()).append(";");
         }
@@ -73,11 +78,20 @@ public class ListConsultaDinamica implements IListConsulta {
     }
 
     /** Uso el polimorfismo de la clase Comparator para implementar mi propio metodo compare**/
-    static class ConsultComparator implements Comparator<Consulta> {
+    static class ConsultComparatorData implements Comparator<Consulta> {
 
         @Override
         public int compare(Consulta a,  Consulta b) {
             return a.esMajor(b.getFecha(),true);
+        }
+
+    }
+
+    static class ConsultComparatorHora implements Comparator<Consulta> {
+
+        @Override
+        public int compare(Consulta a,  Consulta b) {
+            return a.esMajor(b.getHora(),false);
         }
 
     }
