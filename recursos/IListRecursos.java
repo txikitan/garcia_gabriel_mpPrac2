@@ -13,6 +13,8 @@ public interface IListRecursos {
     String getUsuarisAt(String recurs);
     /** Devuelve una cadena con la lista de usuarios que han consultado un recurso en la fecha dada **/
     String getUsuarisDataAt(String recurs, int data);
-    /** Devuelve el numero  de consultas que tiene un recurso **/
-    int getNConsultasAt(String recurso);
+    /**Devuelve el recurso con mas consultas**/
+    IRecurso getNConsultasAt();
+    /**Devuelve una cadena con los recursos consultados por el usuario **/
+    String recursosConsultats(String user);
 }

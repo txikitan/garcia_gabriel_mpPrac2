@@ -67,15 +67,29 @@ public class ListRecursosDinamico implements IListRecursos {
         }
         return usuaris;
     }
-    /** Devuelve el numero  de consultas que tiene un recurso **/
-    public int getNConsultasAt(String recurs) {
-        int nConsultas = -1;
-        for (RecursoDinamico recursoDinamico : listRecursoDinamico) {
-            if (recursoDinamico.getNombre().equalsIgnoreCase(recurs)) {
-                nConsultas = recursoDinamico.getNConsultas();
+    /** Devuelve el recurso que mas consultas tiene **/
+    public RecursoDinamico getNConsultasAt() {
+        RecursoDinamico r = null;
+        int nConsultas = 0;
+        int nConsultas2;
+        for(RecursoDinamico c : listRecursoDinamico){
+            nConsultas2 = c.getNConsultas();
+            if(nConsultas2>nConsultas) {
+                nConsultas = nConsultas2;
+                r = c;
             }
         }
-        return nConsultas;
+        return r;
+    }
+    /**Devuelve una cadena con los recursos consultados por el usuario **/
+    public String recursosConsultats(String user) {
+        StringBuilder usersConsultat = new StringBuilder();
+        for(RecursoDinamico r : listRecursoDinamico){
+            if(r.consultat(user)){
+                usersConsultat.append(r.getNombre()).append(";");
+            }
+        }
+        return usersConsultat.toString();
     }
 
 }

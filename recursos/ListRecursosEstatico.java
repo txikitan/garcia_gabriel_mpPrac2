@@ -70,15 +70,28 @@ public class ListRecursosEstatico implements IListRecursos {
         }
         return usuaris;
     }
-    /** Devuelve el numero  de consultas que tiene un recurso **/
-    public int getNConsultasAt(String recurs) {
-         int nConsultas = -1;
-         for(int i=0;i<nRecursos;i++) {
-             if(listRecursoEstatico[i].getNombre().equalsIgnoreCase(recurs)) {
-                 nConsultas = listRecursoEstatico[i].getNConsultas();
-             }
-         }
-         return nConsultas;
+    /** Devuelve el recurso que mas consultas tiene **/
+    public RecursoEstatico getNConsultasAt() {
+        RecursoEstatico r = null;
+        int nConsultas = 0;
+        int nConsultas2;
+        for(RecursoEstatico c : listRecursoEstatico){
+            nConsultas2 = c.getNConsultas();
+            if(nConsultas2>nConsultas) {
+                nConsultas = nConsultas2;
+                r = c;
+            }
+        }
+        return r;
     }
-
+    /**Devuelve una cadena con los recursos consultados por el usuario **/
+    public String recursosConsultats(String user) {
+        StringBuilder usersConsultat=new StringBuilder();
+        for(RecursoEstatico r : listRecursoEstatico){
+            if(r.consultat(user)){
+                usersConsultat.append(r.getNombre()).append(";");
+            }
+        }
+        return usersConsultat.toString();
+    }
 }

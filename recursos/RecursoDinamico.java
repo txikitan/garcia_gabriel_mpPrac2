@@ -39,15 +39,7 @@ public class RecursoDinamico implements IRecurso {
     }
     /** Dada una fecha, elimina las consultas cuya fecha coincide **/
     public void removeConsultaData(int data) {
-        boolean removed=false;
-        Iterator<Consulta> i = consultas.iterator();
-        while(i.hasNext() && !removed) {
-            Consulta c = i.next();
-            if(c.getFecha()==data){
-                i.remove();
-                removed=true;
-            }
-        }
+        consultas.removeIf(c -> c.getFecha() == data);
        /* for(int i=0;i<consultas.size();i++) {
             if(consultas.get(i).getFecha()==data) {
                 consultas.remove(i);
@@ -81,6 +73,14 @@ public class RecursoDinamico implements IRecurso {
     public String getNombre() {
         return nombre;
     }
-
+    /**Nos dira si un usuario ha realizado una consulta al recurso**/
+    public boolean consultat(String usuario){
+        for(Consulta c : consultas){
+            if(c.getUser().equalsIgnoreCase(usuario)){
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

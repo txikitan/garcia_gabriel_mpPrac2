@@ -71,12 +71,19 @@ public class RecursoEstatico implements IRecurso {
             System.arraycopy(arr, index + 1, arr, index, dim - 1 - index);
         }
     }
-
-
     /**Getters y setters basicos**/
-
     public String getNombre() {
         return nombre;
     }
+    /**Nos dira si un usuario ha realizado una consulta al recurso**/
+    public boolean consultat(String usuario){
+        for(Consulta c : consultas){
+            if(c.getUser().equalsIgnoreCase(usuario)){
+                return true;
+            }
+        }
+        return false;
+    }
+
 
 }

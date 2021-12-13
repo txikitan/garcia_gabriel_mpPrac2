@@ -38,7 +38,12 @@ public class Main {
             System.out.println("Numero de recursos?");
             int dimRecursos = scanner.nextInt();
             ListRecursosEstatico listaREstatica = consultaToRecursoEstatic(listaEstatica,dim,dimRecursos);
-            testREstatico(listaREstatica);
+            if(testREstatico(listaREstatica)){
+                System.out.println("Juego de pruebas del sistema de recursos resulto exitoso");
+            }
+            else {
+                System.out.println("Error en el juego de pruebas del sistema de recursos");
+            }
         }
         else {
             ListConsultaDinamica listaDinamica = new ListConsultaDinamica();
@@ -54,7 +59,12 @@ public class Main {
                 System.out.println("Error en el juego de pruebas del sistema de consultas");
             }
             ListRecursosDinamico listaRDinamica = consultaToRecursoDinamic(listaDinamica);
-            testRDinamico(listaRDinamica);
+            if(testRDinamico(listaRDinamica)){
+                System.out.println("Juego de pruebas del sistema de recursos resulto exitoso");
+            }
+            else {
+                System.out.println("Error en el juego de pruebas del sistema de recursos");
+            }
         }
         scanner.close();
     }
@@ -110,10 +120,11 @@ public class Main {
         String recurs = "";
         String nom = "";
         String access = "";
+        /*Para el matching del retorno de los metodos (verificar que esta correcto)*/
         String users = "";
         String usersdata = "";
         boolean orden = true;
-
+        /*Test*/
         if(!(listaEstatica.consultat(nom,recurs))) return false;
         if(!(listaEstatica.getAccess(nom, orden).equalsIgnoreCase(access))) return false;
         if(!(listaEstatica.getUsers(recurs).equalsIgnoreCase(users))) return false;
@@ -127,10 +138,11 @@ public class Main {
         String recurs = "";
         String nom = "";
         String access = "";
+        /*Para el matching del retorno de los metodos (verificar que esta correcto)*/
         String users = "";
         String usersdata = "";
         boolean orden = true;
-
+        /*Test*/
         if(!(listaDinamica.consultat(nom,recurs))) return false;
         if(!(listaDinamica.getAccess(nom, orden).equalsIgnoreCase(access))) return false;
         if(!(listaDinamica.getUsers(recurs).equalsIgnoreCase(users))) return false;
@@ -155,12 +167,48 @@ public class Main {
         return listaRDinamica;
     }
     /** Devuelve cierto si el test de los metodos de la implementacion estatica del TAD IListRecursos ha ido correctamente **/
-    public static void testRDinamico(ListRecursosDinamico listaREstatica) {
-
+    public static boolean testRDinamico(ListRecursosDinamico listaRDinamica) {
+        /*Insertar aqui datos para las pruebas*/
+        String user = "";
+        String recurs = "";
+        int data = 0;
+        int hora = 0;
+        Consulta c = new Consulta(user,recurs,data,hora);
+        /*Para el matching del retorno de los metodos (verificar que esta correcto)*/
+        String usuaris = "";
+        String usuarisData = "";
+        String recursosConsultats = "";
+        String recursConsultas = "";
+        /*Test*/
+        listaRDinamica.removeConsultaAt(c);
+        listaRDinamica.removeConsultaDataAt(recurs,data);
+        if(!(listaRDinamica.getUsuarisAt(recurs).equalsIgnoreCase(usuaris))) return false;
+        if(!(listaRDinamica.getUsuarisDataAt(recurs,data).equalsIgnoreCase(usuarisData))) return false;
+        if(!(listaRDinamica.recursosConsultats(user).equalsIgnoreCase(recursosConsultats)))return false;
+        RecursoDinamico r = listaRDinamica.getNConsultasAt();
+        return r.getNombre().equalsIgnoreCase(recursConsultas);
     }
     /** Devuelve cierto si el test de los metodos de la implementacion dinamica del TAD IListRecursos ha ido correctamente **/
-    public static void testREstatico(ListRecursosEstatico listaRDinamica) {
-
+    public static boolean testREstatico(ListRecursosEstatico listaREstatica) {
+        /*Insertar aqui datos para las pruebas*/
+        String user = "";
+        String recurs = "";
+        int data = 0;
+        int hora = 0;
+        Consulta c = new Consulta(user,recurs,data,hora);
+        /*Para el matching del retorno de los metodos (verificar que esta correcto)*/
+        String usuaris = "";
+        String usuarisData = "";
+        String recursosConsultats = "";
+        String recursConsultas = "";
+        /*Test*/
+        listaREstatica.removeConsultaAt(c);
+        listaREstatica.removeConsultaDataAt(recurs,data);
+        if(!(listaREstatica.getUsuarisAt(recurs).equalsIgnoreCase(usuaris))) return false;
+        if(!(listaREstatica.getUsuarisDataAt(recurs,data).equalsIgnoreCase(usuarisData))) return false;
+        if(!(listaREstatica.recursosConsultats(user).equalsIgnoreCase(recursosConsultats)))return false;
+        RecursoEstatico r = listaREstatica.getNConsultasAt();
+        return r.getNombre().equalsIgnoreCase(recursConsultas);
     }
 
 }

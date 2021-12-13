@@ -15,4 +15,6 @@ public interface IRecurso {
     String getUsuarisData(int data);
     /** Devuelve el numero de consultas que tiene el recurso **/
     int getNConsultas();
+    /**Nos dira si un usuario ha realizado una consulta al recurso**/
+    boolean consultat(String user);
 }
