@@ -22,8 +22,9 @@ public class ListRecursosDinamico implements IListRecursos {
             }
         }
         if(!trobat) {
-            listRecursoDinamico.add(new RecursoDinamico(recurs));
-            listRecursoDinamico.getLast().addConsulta(a);
+            RecursoDinamico rd = new RecursoDinamico(recurs);
+            rd.addConsulta(a);
+            listRecursoDinamico.add(rd);
         }
 
     }

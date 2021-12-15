@@ -49,7 +49,7 @@ public class ListConsultaDinamica implements IListConsulta {
             // Si el recurso coincide y la fecha de la consulta esta entre el rango deseado...
             int major2 = consulta.esMajor(data2, true);
             int major1 = consulta.esMajor(data1, true);
-            if (consulta.getRecurso().equalsIgnoreCase(recurs) && (major1 == 1 || major1 == 0) && (major2 == 1 || major2 == 0)) {
+            if (consulta.getRecurso().equalsIgnoreCase(recurs) && (major1 == 1 || major1 == 0) && (major2 == -1 || major2 == 0)) {
                 users.append(consulta.getUser()).append(";");
             }
         }

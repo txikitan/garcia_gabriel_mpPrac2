@@ -23,7 +23,9 @@ public class Consulta {
         return this.user.equalsIgnoreCase(a.getUser()) && this.recurso.equalsIgnoreCase(a.getRecurso()) && this.fecha == a.getFecha() && this.hora == a.getHora();
     }
 
-    /** Metodo que verifica si una fecha o una hora es superior a la otra **/
+    /** Metodo que verifica si una fecha o una hora es superior a la otra
+     * Si dataORhora==true->ordenar por fecha
+     * Si dataORhora==false->ordenar por hora**/
     public int esMajor(int datahora2, boolean dataORhora) {
         int datahora1;
         if(dataORhora) {
@@ -35,7 +37,7 @@ public class Consulta {
         int[] abc2;
         abc1 = this.convertDataHora(datahora1);
         abc2 = this.convertDataHora(datahora2);
-        if(dataORhora) {
+        if(!dataORhora) {
             if(abc1[0] == abc2[0] && abc1[1] == abc2[1] && abc1[2] == abc2[2]) return 0;
             if(abc1[2] > abc2[2]) return 1;
             if(abc1[2] < abc2[2]) return -1;

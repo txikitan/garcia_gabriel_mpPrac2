@@ -26,8 +26,9 @@ public class ListRecursosEstatico implements IListRecursos {
         if(!trobat) {
             listRecursoEstatico[nRecursos] = new RecursoEstatico(recurs, dimConsultas);
             listRecursoEstatico[nRecursos].addConsulta(a);
+            nRecursos++;
         }
-        nRecursos++;
+
     }
     /** Elimina una consulta a un recurso **/
     public void removeConsultaAt(Consulta a) {
@@ -75,11 +76,11 @@ public class ListRecursosEstatico implements IListRecursos {
         RecursoEstatico r = null;
         int nConsultas = 0;
         int nConsultas2;
-        for(RecursoEstatico c : listRecursoEstatico){
-            nConsultas2 = c.getNConsultas();
+        for(int i=0;i<nRecursos;i++){
+            nConsultas2 = listRecursoEstatico[i].getNConsultas();
             if(nConsultas2>nConsultas) {
                 nConsultas = nConsultas2;
-                r = c;
+                r = listRecursoEstatico[i];
             }
         }
         return r;
@@ -87,9 +88,9 @@ public class ListRecursosEstatico implements IListRecursos {
     /**Devuelve una cadena con los recursos consultados por el usuario **/
     public String recursosConsultats(String user) {
         StringBuilder usersConsultat=new StringBuilder();
-        for(RecursoEstatico r : listRecursoEstatico){
-            if(r.consultat(user)){
-                usersConsultat.append(r.getNombre()).append(";");
+        for(int i=0;i<nRecursos;i++){
+            if(listRecursoEstatico[i].consultat(user)){
+                usersConsultat.append(listRecursoEstatico[i].getNombre()).append(";");
             }
         }
         return usersConsultat.toString();

@@ -53,7 +53,7 @@ public class ListConsultaEstatica implements IListConsulta {
             // Si el recurso coincide y la fecha de la consulta esta entre el rango deseado...
             int major2 = listaConsultaEstatica[i].esMajor(data2, true);
             int major1 = listaConsultaEstatica[i].esMajor(data1, true);
-            if (listaConsultaEstatica[i].getRecurso().equalsIgnoreCase(recurs) && (major1==1 || major1 == 0) && (major2==1 || major2 == 0)) {
+            if (listaConsultaEstatica[i].getRecurso().equalsIgnoreCase(recurs) && (major1==1 || major1 == 0) && (major2==-1 || major2 == 0)) {
                 users.append(listaConsultaEstatica[i].getUser()).append(";");
             }
         }

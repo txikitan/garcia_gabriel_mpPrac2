@@ -20,6 +20,7 @@ public class RecursoEstatico implements IRecurso {
     public void addConsulta(Consulta a) throws NullPointerException {
         if(nConsultas<dim){
             consultas[nConsultas]=a;
+            nConsultas++;
         }
         else throw new NullPointerException();
     }
@@ -45,17 +46,17 @@ public class RecursoEstatico implements IRecurso {
     /** Devuelve una cadena con los usuarios que han consultado un recurso **/
     public String getUsuaris() {
         StringBuilder usuaris = new StringBuilder();
-        for(Consulta c : consultas) {
-            usuaris.append(c.getUser()).append(";");
+        for(int i=0;i<nConsultas;i++) {
+            usuaris.append(consultas[i].getUser()).append(";");
         }
         return usuaris.toString();
     }
     /** Dada una fecha, devuelve una cadena con los usuarios que han consultado el recurso en esa fecha **/
     public String getUsuarisData(int data){
         StringBuilder usuaris = new StringBuilder();
-        for(Consulta c : consultas) {
-            if(c.getFecha()==data) {
-                usuaris.append(c.getUser()).append(";");
+        for(int i=0;i<nConsultas;i++) {
+            if(consultas[i].getFecha()==data) {
+                usuaris.append(consultas[i].getUser()).append(";");
             }
         }
         return usuaris.toString();
@@ -66,10 +67,8 @@ public class RecursoEstatico implements IRecurso {
     }
     /** Metodo auxiliar que ajusta la lista estatica al eliminar una consulta a cierto recurso **/
     private static void eliminar(Consulta[] arr, int index, int dim) {
-        arr[index]=null;
-        if (dim - 1 - index >= 0) {
-            System.arraycopy(arr, index + 1, arr, index, dim - 1 - index);
-        }
+        if (dim - 1 - index >= 0) System.arraycopy(arr, index + 1, arr, index, dim - 1 - index);
+        arr[dim-1]=null;
     }
     /**Getters y setters basicos**/
     public String getNombre() {
@@ -77,8 +76,8 @@ public class RecursoEstatico implements IRecurso {
     }
     /**Nos dira si un usuario ha realizado una consulta al recurso**/
     public boolean consultat(String usuario){
-        for(Consulta c : consultas){
-            if(c.getUser().equalsIgnoreCase(usuario)){
+        for(int i=0;i<nConsultas;i++){
+            if(consultas[i].getUser().equalsIgnoreCase(usuario)){
                 return true;
             }
         }

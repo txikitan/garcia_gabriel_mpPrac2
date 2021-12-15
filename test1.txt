@@ -1,1 +1,10 @@
-Gabriel;071221;093423;Recurs1;
+Gabriel;071221;193423;Recurs1;
+Anna;101321;194053;Recurs2;
+Ismael;030921;111523;Recurs3;
+Julia;150221;073415;Recurs4;
+Gabriel;190521;082103;Recurs2;
+Ismael;180521;072405;Recurs4;
+Joel;020721;054558;Recurs1;
+Joel;010521;134558;Recurs1;
+Gabriel;020321;125121;Recurs3;
+Anna;231121;145458;Recurs2;
