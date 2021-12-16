@@ -8,11 +8,11 @@ import java.util.LinkedList;
 public class RecursoDinamico implements IRecurso {
 
     private final String nombre;
-    private final LinkedList<Consulta> consultas;
+    private final ListaEnlazada<Consulta> consultas;
     /** Metodo constructor **/
     public RecursoDinamico(String nombre) {
         this.nombre=nombre;
-        this.consultas = new LinkedList<>();
+        this.consultas = new ListaEnlazada<>();
     }
     /** Añade una consulta al recurso **/
     public void addConsulta(Consulta a) {
@@ -39,13 +39,12 @@ public class RecursoDinamico implements IRecurso {
     }
     /** Dada una fecha, elimina las consultas cuya fecha coincide **/
     public void removeConsultaData(int data) {
-        consultas.removeIf(c -> c.getFecha() == data);
-       /* for(int i=0;i<consultas.size();i++) {
-            if(consultas.get(i).getFecha()==data) {
-                consultas.remove(i);
+       for(int i=0;i<consultas.size();i++) {
+           Consulta c = consultas.get(i);
+            if(c.getFecha()==data) {
+                consultas.remove(c);
             }
         }
-        */
     }
     /** Devuelve una cadena con los usuarios que han consultado un recurso **/
     public String getUsuaris(){

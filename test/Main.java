@@ -139,7 +139,7 @@ public class Main {
     /**Convierte el conjunto de consultas del objeto dinamico del TAD IListConculta a un objeto dinamico del TAD IListRecursos**/
     public static ListRecursosDinamico consultaToRecursoDinamic(ListConsultaDinamica listaDinamica) {
         ListRecursosDinamico listaRDinamica = new ListRecursosDinamico();
-        LinkedList<Consulta> listaConsultas = listaDinamica.getListaConsultaDinamica();
+        ListaEnlazada<Consulta> listaConsultas = listaDinamica.getListaConsultaDinamica();
         for(int i=0;i<listaDinamica.getnConsultas();i++) {
             listaRDinamica.addConsultaAt(listaConsultas.get(i));
         }

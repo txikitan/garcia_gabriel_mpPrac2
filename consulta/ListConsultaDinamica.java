@@ -7,11 +7,11 @@ import java.util.LinkedList;
 public class ListConsultaDinamica implements IListConsulta {
 
 
-    private final LinkedList<Consulta> listaConsultaDinamica;
+    private final ListaEnlazada<Consulta> listaConsultaDinamica;
 
     /** Metodo constructor **/
     public ListConsultaDinamica() {
-        this.listaConsultaDinamica = new LinkedList<>();
+        this.listaConsultaDinamica = new ListaEnlazada<>();
     }
 
     /** Añade una consulta **/
@@ -97,7 +97,7 @@ public class ListConsultaDinamica implements IListConsulta {
     }
 
     /** Getters y setters basicos **/
-    public LinkedList<Consulta> getListaConsultaDinamica() {
+    public ListaEnlazada<Consulta> getListaConsultaDinamica() {
         return listaConsultaDinamica;
     }
 

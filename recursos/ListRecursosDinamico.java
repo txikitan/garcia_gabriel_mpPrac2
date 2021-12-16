@@ -5,10 +5,10 @@
 import java.util.LinkedList;
 
 public class ListRecursosDinamico implements IListRecursos {
-    private final LinkedList<RecursoDinamico> listRecursoDinamico;
+    private final ListaEnlazada<RecursoDinamico> listRecursoDinamico;
     /** Metodo constructor **/
     public ListRecursosDinamico() {
-        this.listRecursoDinamico = new LinkedList<>();
+        this.listRecursoDinamico = new ListaEnlazada<>();
     }
     /** Añade una consulta a un recurso **/
     public void addConsultaAt(Consulta a) {
