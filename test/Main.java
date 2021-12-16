@@ -1,9 +1,9 @@
 /**Metodologias de la programacion
  * Practica 2 - Fichero Main en donde se implementa la estructura funcional de la aplicacion y se realizan los testeos
  * Gabriel Garcia **/
+
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {

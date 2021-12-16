@@ -7,24 +7,12 @@ class ListaEnlazada<T> implements Iterable<T> {
 
     /**Definimos el nodo**/
     public class Node {
-        private final T data;
-        private Node next;
+        T data;
+        Node next;
 
         public Node(T data) {
-            super();
+            this.next = null;
             this.data = data;
-        }
-
-        public Node getNext() {
-            return next;
-        }
-
-        public void setNext(Node next) {
-            this.next = next;
-        }
-
-        public T getData() {
-            return data;
         }
     }
 
@@ -52,7 +40,7 @@ class ListaEnlazada<T> implements Iterable<T> {
             tail = head;
         } else {
             //Linkedlist no vacia, añadimos elemento
-            tail.setNext(node);
+            tail.next = node;
             tail = node;
         }
         nodeCounter++;
@@ -65,26 +53,26 @@ class ListaEnlazada<T> implements Iterable<T> {
         }
 
         //Eliminamos el primer elemento si esta en cabeza
-        if (head.getData().equals(data)) {
+        if (head.data.equals(data)) {
             Node temp = head;
-            head = temp.getNext();
+            head = temp.next;
             temp = null;
             this.nodeCounter--;
         } else {
             // En caso contrario
-            Node temp = head.getNext();
+            Node temp = head.next;
             Node prev = head;
             // Empezamos a iterar sobre la lista
             while (temp != null) {
                 // Checkeamos si encontramos el dato a eliminar
-                if (temp.getData().equals(data)) {
-                    prev.setNext(temp.getNext());
+                if (temp.data.equals(data)) {
+                    prev.next=temp.next;
                     temp = null;
                     this.nodeCounter--;
                     break;
                 }
                 prev = temp;
-                temp = temp.getNext();
+                temp = temp.next;
             }
         }
     }
@@ -106,18 +94,18 @@ class ListaEnlazada<T> implements Iterable<T> {
             throw new IndexOutOfBoundsException("Index greater than list size");
         //If given index is of head node then return the data
         if (index == cntr)
-            data = head.getData();
+            data = head.data;
             //If given index is of tail node then return data
         else if (index == (nodeCounter - 1))
-            data = tail.getData();
+            data = tail.data;
         else {
             //Checking the given index with the node index
             while (temp != null) {
                 if (cntr == index) {
-                    data = temp.getData();
+                    data = temp.data;
                     break;
                 }
-                temp = temp.getNext();
+                temp = temp.next;
                 cntr++;
             }
         }

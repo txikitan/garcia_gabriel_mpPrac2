@@ -2,8 +2,6 @@
  * Practica 2 - Fichero que implementa de forma dinamica la interfaz del TAD IRecurso
  *              que almacenara todas las consultas a dicho recurso
  * Gabriel Garcia **/
-import java.util.Iterator;
-import java.util.LinkedList;
 
 public class RecursoDinamico implements IRecurso {
 
@@ -20,27 +18,17 @@ public class RecursoDinamico implements IRecurso {
     }
     /** Elimina una consulta del recurso **/
     public void removeConsulta(Consulta a) {
-        boolean removed=false;
-        Iterator<Consulta> i = consultas.iterator();
-        while(i.hasNext() && !removed) {
-            Consulta c = i.next();
-            if(c.equals(a)) {
-                i.remove();
-                removed=true;
-            }
-        }
-        /*for(int i=0;i<consultas.size();i++){
-            if(consultas.get(i).equals(a)){
-                consultas.remove(i);
+
+        for(Consulta c : consultas){
+            if(c.equals(a)){
+                consultas.remove(c);
                 break;
             }
         }
-        */
     }
     /** Dada una fecha, elimina las consultas cuya fecha coincide **/
     public void removeConsultaData(int data) {
-       for(int i=0;i<consultas.size();i++) {
-           Consulta c = consultas.get(i);
+       for(Consulta c : consultas) {
             if(c.getFecha()==data) {
                 consultas.remove(c);
             }

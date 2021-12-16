@@ -56,60 +56,21 @@ public class ListConsultaDinamica implements IListConsulta {
     }
 
     /** Devuelve la lista de recursos accedidos por un usuario, ordenados por fecha(true) o por hora(false)**/
-    /*public String getAccess(String nom, boolean orden) {
-        StringBuilder access = new StringBuilder();
-        LinkedList<Consulta> arr = new LinkedList<>();
-        for (Consulta consulta : listaConsultaDinamica) {
-            if (consulta.getUser().equalsIgnoreCase(nom)) {
-                arr.add(consulta);
-            }
-        }
-        if(orden){
-            arr.sort(new ConsultComparatorData()); // Uso mi comparator para ordenar
-        }
-        else{
-            arr.sort(new ConsultComparatorHora());
-        }
-        for (Consulta consulta : arr) {
-            access.append(consulta.getRecurso()).append(";");
-        }
-        return access.toString();
-    }*/
-
     public String getAccess(String nom, boolean orden) {
         StringBuilder access = new StringBuilder();
-        //LinkedList<Consulta> arr = new LinkedList<>();
         SortedListaEnlazada sortedLista = new SortedListaEnlazada();
         for (Consulta consulta : listaConsultaDinamica) {
             if (consulta.getUser().equalsIgnoreCase(nom)) {
                 sortedLista.add(consulta);
             }
         }
-        sortedLista.mergeSort(sortedLista.getHead(),orden);
+        sortedLista.sortList(orden);
         for (Consulta consulta : sortedLista) {
             access.append(consulta.getRecurso()).append(";");
         }
         return access.toString();
     }
 
-    /** Uso el polimorfismo de la clase Comparator para implementar mi propio metodo compare**/
-    static class ConsultComparatorData implements Comparator<Consulta> {
-
-        @Override
-        public int compare(Consulta a,  Consulta b) {
-            return a.esMajor(b.getFecha(),true);
-        }
-
-    }
-
-    static class ConsultComparatorHora implements Comparator<Consulta> {
-
-        @Override
-        public int compare(Consulta a,  Consulta b) {
-            return a.esMajor(b.getHora(),false);
-        }
-
-    }
 
     /** Getters y setters basicos **/
     public ListaEnlazada<Consulta> getListaConsultaDinamica() {
