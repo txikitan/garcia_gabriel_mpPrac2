@@ -1,9 +1,6 @@
 /**Metodologias de la programacion
  * Practica 2 - Fichero que implementa con almacenamiento dinamico el TAD IListConsulta
  * Gabriel Garcia **/
-import java.util.Comparator;
-import java.util.LinkedList;
-
 public class ListConsultaDinamica implements IListConsulta {
 
     private final ListaEnlazada<Consulta> listaConsultaDinamica;

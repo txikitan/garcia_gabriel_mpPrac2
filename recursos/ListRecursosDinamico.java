@@ -2,7 +2,6 @@
  * Practica 2 - Fichero con la implementacion dinamica del TAD IListRecursos
  *              que almacenara los recursos con sus respectivas consultas
  * Gabriel Garcia **/
-import java.util.LinkedList;
 
 public class ListRecursosDinamico implements IListRecursos {
     private final ListaEnlazada<RecursoDinamico> listRecursoDinamico;
