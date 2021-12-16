@@ -6,7 +6,6 @@ import java.util.LinkedList;
 
 public class ListConsultaDinamica implements IListConsulta {
 
-
     private final ListaEnlazada<Consulta> listaConsultaDinamica;
 
     /** Metodo constructor **/
@@ -57,7 +56,7 @@ public class ListConsultaDinamica implements IListConsulta {
     }
 
     /** Devuelve la lista de recursos accedidos por un usuario, ordenados por fecha(true) o por hora(false)**/
-    public String getAccess(String nom, boolean orden) {
+    /*public String getAccess(String nom, boolean orden) {
         StringBuilder access = new StringBuilder();
         LinkedList<Consulta> arr = new LinkedList<>();
         for (Consulta consulta : listaConsultaDinamica) {
@@ -72,6 +71,22 @@ public class ListConsultaDinamica implements IListConsulta {
             arr.sort(new ConsultComparatorHora());
         }
         for (Consulta consulta : arr) {
+            access.append(consulta.getRecurso()).append(";");
+        }
+        return access.toString();
+    }*/
+
+    public String getAccess(String nom, boolean orden) {
+        StringBuilder access = new StringBuilder();
+        //LinkedList<Consulta> arr = new LinkedList<>();
+        SortedListaEnlazada sortedLista = new SortedListaEnlazada();
+        for (Consulta consulta : listaConsultaDinamica) {
+            if (consulta.getUser().equalsIgnoreCase(nom)) {
+                sortedLista.add(consulta);
+            }
+        }
+        sortedLista.mergeSort(sortedLista.getHead(),orden);
+        for (Consulta consulta : sortedLista) {
             access.append(consulta.getRecurso()).append(";");
         }
         return access.toString();

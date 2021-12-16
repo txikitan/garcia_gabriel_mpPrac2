@@ -2,7 +2,6 @@
  * Practica 2 - Fichero que implementa la estructura de datos lista enlazada generica para la implementacion dinamica de la aplicacion
  * Gabriel Garcia **/
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 class ListaEnlazada<T> implements Iterable<T> {
 
@@ -29,6 +28,11 @@ class ListaEnlazada<T> implements Iterable<T> {
         }
     }
 
+    public Node getHead() {
+        return head;
+    }
+
+
     //Primer elemento
     private Node head;
     //Ultimo elemento
@@ -36,76 +40,61 @@ class ListaEnlazada<T> implements Iterable<T> {
     //Tamaño
     private int nodeCounter;
 
-    public boolean add(T data) {
-        boolean addFlag = false;
+    /**Añade un nodo a la lista**/
+    public void add(T data) {
 
-        //Creating new node with given data
+        //Creamos nuevo nodo
         Node node = new Node(data);
-        //Linked list is empty, adding first element
+        //Si la linkedlist esta vacia..
         if (this.head == null) {
             head = node;
-            //Head and tail pointing to the same node
+            //Head y tail apuntaran al mismo nodo
             tail = head;
-            nodeCounter++;
-            addFlag = true;
         } else {
-            //Linked list is not empty, adding new element to the list
+            //Linkedlist no vacia, añadimos elemento
             tail.setNext(node);
             tail = node;
-            nodeCounter++;
-            addFlag = true;
         }
-        return addFlag;
+        nodeCounter++;
     }
 
-    public boolean remove(T data) {
-
-        boolean removeFlag = false;
-        //Checking whether list is empty or not
+    public void remove(T data) {
+        //Checkeamos si esta vacia o no
         if (head == null) {
             throw new IndexOutOfBoundsException("List is empty");
         }
 
-        //Deleting head element
+        //Eliminamos el primer elemento si esta en cabeza
         if (head.getData().equals(data)) {
             Node temp = head;
             head = temp.getNext();
             temp = null;
             this.nodeCounter--;
-            removeFlag = true;
         } else {
+            // En caso contrario
             Node temp = head.getNext();
             Node prev = head;
-            // Iterating over the list
+            // Empezamos a iterar sobre la lista
             while (temp != null) {
-                // Checking the data for node deletion
+                // Checkeamos si encontramos el dato a eliminar
                 if (temp.getData().equals(data)) {
                     prev.setNext(temp.getNext());
                     temp = null;
                     this.nodeCounter--;
-                    removeFlag = true;
                     break;
                 }
                 prev = temp;
                 temp = temp.getNext();
             }
         }
-        return removeFlag;
     }
 
-    public void printNodes() {
-        Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.getData() + " ");
-            temp = temp.getNext();
-        }
-        System.out.println();
-    }
-
+    /**Devuelve el tamaño de la lista**/
     public int size() {
         return this.nodeCounter;
     }
 
+    /**Nos devuelve el elemento iEssimo de la lista**/
     public T get(int index) {
         T data = null;
         Node temp = head;
@@ -135,16 +124,14 @@ class ListaEnlazada<T> implements Iterable<T> {
         return data;
     }
 
+    /**Hacemos la estructura iterable para poder recorrerla con bucles forEach**/
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-
+        return new Iterator<>() {
             Node current = head;
-
             @Override
             public boolean hasNext() {
                 return current != null;
             }
-
             @Override
             public T next() {
                 if (hasNext()) {
@@ -154,8 +141,6 @@ class ListaEnlazada<T> implements Iterable<T> {
                 }
                 return null;
             }
-
-
         };
     }
 }

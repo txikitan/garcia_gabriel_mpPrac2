@@ -79,12 +79,17 @@ public class ListConsultaEstatica implements IListConsulta {
     }
 
     /** QuickSort para ordenar el vector por fecha/hora **/
-
     private static int partition(Consulta[] arr, int low, int high, boolean dataORhora) {
         Consulta pivot = arr[high];
         int i = (low - 1); // index of smaller element
+        int major;
         for (int j = low; j < high; j++) {
-            int major = arr[j].esMajor(pivot.getFecha(), dataORhora);
+            if(dataORhora) {
+                major = arr[j].esMajor(pivot.getFecha(), dataORhora);
+            }
+            else {
+                major = arr[j].esMajor(pivot.getHora(), dataORhora);
+            }
             if (major==-1) {
                 i++;
                 swap(arr, i, j);
