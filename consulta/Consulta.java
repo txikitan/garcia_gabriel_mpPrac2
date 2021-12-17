@@ -1,8 +1,8 @@
 /**Metodologias de la programacion
-* Practica 2 - Fichero que define el tipo basico Consulta
+* Practica 2 - Fichero que implementa el tipo basico Consulta
 * Gabriel Garcia **/
 
-public class Consulta {
+public class Consulta implements IConsulta {
 
     private final String user;
     private final String recurso;

@@ -1,7 +1,7 @@
 /**Metodologias de la programacion
  * Practica 2 - Fichero que aprovecha el polimorfismo para crear una subclase de la lista enlazada con la operacion de ordenacion bubblesort
  * Gabriel Garcia **/
-public class SortedListaEnlazada extends ListaEnlazada<Consulta> {
+public class SortedListaEnlazada extends ListaEnlazada<Consulta> implements IListaEnlazada<Consulta> {
     /**Metodo para llevar a cabo el sort (bubblesort)**/
     public void sortList(boolean dataORhora)
     {

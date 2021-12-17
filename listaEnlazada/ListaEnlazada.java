@@ -3,7 +3,7 @@
  * Gabriel Garcia **/
 import java.util.Iterator;
 
-class ListaEnlazada<T> implements Iterable<T> {
+class ListaEnlazada<T> implements Iterable<T>, IListaEnlazada<T> {
 
     /**Definimos el nodo**/
     public class Node {
@@ -46,6 +46,7 @@ class ListaEnlazada<T> implements Iterable<T> {
         nodeCounter++;
     }
 
+    /**Elimina un nodo de la lista **/
     public void remove(T data) {
         //Checkeamos si esta vacia o no
         if (head == null) {
