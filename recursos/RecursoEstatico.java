@@ -39,7 +39,7 @@ public class RecursoEstatico implements IRecurso {
         for(int i=0;i<nConsultas;i++){
             if(consultas[i].getFecha()==data){
                 eliminar(consultas,i,nConsultas);
-                nConsultas--;
+                this.nConsultas--; //aqui no sale del bucle ya que habra mas de una consulta por eliminar en esa fecha
             }
         }
     }

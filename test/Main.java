@@ -159,7 +159,7 @@ public class Main {
         listaRDinamica.removeConsultaDataAt(recurs,data);
         System.out.println("Borradas consultas por fecha: "+recurs+";"+data+";");
         System.out.println("Resultado de getUsuarisAt(recurs): "+listaRDinamica.getUsuarisAt(recurs));
-        System.out.println("Resultado de getUsuarisDataAt(recurs): "+listaRDinamica.getUsuarisDataAt(recurs,data));
+        System.out.println("Resultado de getUsuarisDataAt(recurs)(deberia ser vacio al eliminar): "+listaRDinamica.getUsuarisDataAt(recurs,data));
         System.out.println("Resultado de recursosConsultats(user): "+ listaRDinamica.recursosConsultats(user));
         RecursoDinamico r = listaRDinamica.getNConsultasAt();
         System.out.println("Nombre del recurso resultante de getNConsultasAt(): "+r.getNombre());
@@ -178,7 +178,7 @@ public class Main {
         listaREstatica.removeConsultaDataAt(recurs,data);
         System.out.println("Borradas consultas por fecha: "+recurs+";"+data+";");
         System.out.println("Resultado de getUsuarisAt(recurs): "+listaREstatica.getUsuarisAt(recurs));
-        System.out.println("Resultado de getUsuarisDataAt(recurs): "+listaREstatica.getUsuarisDataAt(recurs,data));
+        System.out.println("Resultado de getUsuarisDataAt(recurs)(deberia ser vacio al eliminar): "+listaREstatica.getUsuarisDataAt(recurs,data));
         System.out.println("Resultado de recursosConsultats(user): "+ listaREstatica.recursosConsultats(user));
         RecursoEstatico r = listaREstatica.getNConsultasAt();
         System.out.println("Nombre del recurso resultante de getNConsultasAt(): "+r.getNombre());
